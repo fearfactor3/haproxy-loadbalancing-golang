@@ -1,0 +1,19 @@
+services:
+  elb:
+    image: haproxy
+    ports:
+      - "8100:8100"
+    volumes:
+      - ./haproxy:/usr/local/etc/haproxy
+  proxy1:
+    image: proxy
+    environment:
+      - APPPORT=8081
+  proxy2:
+    image: proxy
+    environment:
+      - APPPORT=8082
+  proxy3:
+    image: proxy
+    environment:
+      - APPPORT=8083
